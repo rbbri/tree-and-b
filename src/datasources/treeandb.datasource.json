@@ -4,7 +4,7 @@
   "url": "",
   "host": "",
   "port": 0,
-  "user": "",
-  "password": "",
+  "user": "postgres",
+  "password": "password",
   "database": "treeandb"
 }
