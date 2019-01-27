@@ -1,9 +1,17 @@
-ENV['RACK_ENV'] = 'test'
-require File.join(File.dirname(__FILE__), '..', 'app.rb')
-require 'capybara'
-require 'capybara/rspec'
-require 'rspec'
 require 'factory_bot'
+require 'pry'
+require 'rspec'
+require 'capybara/rspec'
+require_relative 'support/database_cleaner'
+require_relative '../app.rb'
+require 'valid_attribute'
+require 'shoulda/matchers'
+
+set :environment, :test
+set :database, :test
+
+ActiveRecord::Base.logger.level = 1
+
 
 Capybara.app = Treeandb
 
@@ -19,6 +27,13 @@ RSpec.configure do |config|
   end
 
   config.shared_context_metadata_behavior = :apply_to_host_groups
+end
+
+Shoulda::Matchers.configure do |config|
+  config.integrate do |with|
+    with.test_framework :rspec
+    with.library :active_record
+  end
 end
 
 FactoryBot.definition_file_paths = %w[./spec/factories]

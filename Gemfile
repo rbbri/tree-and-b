@@ -23,7 +23,7 @@ group :test do
   gem 'rspec', '~> 3.4'
   gem 'rubocop'
   gem 'shoulda'
-  gem 'shoulda-matchers', '~> 3.1', require: false
+  gem 'shoulda-matchers', require: false
   gem 'simplecov'
   gem 'valid_attribute'
 end
