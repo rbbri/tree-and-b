@@ -1,0 +1,25 @@
+ENV['RACK_ENV'] = 'test'
+require File.join(File.dirname(__FILE__), '..', 'app.rb')
+require 'capybara'
+require 'capybara/rspec'
+require 'rspec'
+require 'factory_bot'
+
+Capybara.app = Treeandb
+
+RSpec.configure do |config|
+  config.include Capybara
+
+  config.expect_with :rspec do |expectations|
+    expectations.include_chain_clauses_in_custom_matcher_descriptions = true
+  end
+
+  config.mock_with :rspec do |mocks|
+    mocks.verify_partial_doubles = true
+  end
+
+  config.shared_context_metadata_behavior = :apply_to_host_groups
+end
+
+FactoryBot.definition_file_paths = %w[./spec/factories]
+FactoryBot.find_definitions
