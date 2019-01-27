@@ -1,0 +1,29 @@
+# Configure the database used when in the development environment
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: treeandb_development
+  pool: 5
+  host: localhost
+  username: postgres
+  password: password 
+
+# Configure the database used when in the test environment
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: treeandb_test
+  pool: 5
+  host: localhost
+  username: postgres
+  password: password
+
+# Configure the database used when in the production environment
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: treeandb_production
+  pool: 5
+  host: localhost
+  username: postgres
+  password: password
