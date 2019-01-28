@@ -4,18 +4,21 @@ require 'sinatra/reloader'
 
 enable :sessions
 
-configure :development, :test do
-  require 'pry'
-end
-
 Dir[File.join(File.dirname(__FILE__), 'app', '**', '*.rb')].each do |file|
   require file
   also_reload file
+  after_reload do
+    puts 'reload!'
+  end
 end
 
 # Main application
 class Treeandb < Sinatra::Base
+  configure :development do
+    register Sinatra::Reloader
+  end
+
   get '/' do
-    @title = 'Hello World'
+    @title = 'Hello World 2'
   end
 end

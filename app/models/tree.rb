@@ -1,3 +1,4 @@
+# Tree model
 class Tree < ActiveRecord::Base
   validates :name, presence: true
   validates :description, presence: true
