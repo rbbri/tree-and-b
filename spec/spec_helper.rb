@@ -12,7 +12,6 @@ set :database, :test
 
 ActiveRecord::Base.logger.level = 1
 
-
 Capybara.app = Treeandb
 
 RSpec.configure do |config|
