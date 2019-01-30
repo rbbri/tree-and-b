@@ -6,6 +6,14 @@ require_relative 'support/database_cleaner'
 require_relative '../app.rb'
 require 'valid_attribute'
 require 'shoulda/matchers'
+require 'rack/test'
+
+module RSpecMixin
+  include Rack::Test::Methods
+  def app()
+    described_class
+  end
+end
 
 set :environment, :test
 set :database, :test
@@ -16,6 +24,8 @@ Capybara.app = Treeandb
 
 RSpec.configure do |config|
   config.include Capybara
+
+  config.include RSpecMixin
 
   config.expect_with :rspec do |expectations|
     expectations.include_chain_clauses_in_custom_matcher_descriptions = true

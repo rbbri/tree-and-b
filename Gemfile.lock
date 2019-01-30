@@ -128,6 +128,7 @@ DEPENDENCIES
   factory_bot
   pg
   pry
+  rack-test
   rake
   rspec (~> 3.4)
   rubocop

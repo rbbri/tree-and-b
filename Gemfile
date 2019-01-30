@@ -26,4 +26,5 @@ group :test do
   gem 'shoulda-matchers', require: false
   gem 'simplecov'
   gem 'valid_attribute'
+  gem 'rack-test'
 end
