@@ -40,6 +40,8 @@ class Treeandb < Sinatra::Base
 
     get '/trees' do
       # Get all trees
+      response = Tree.all
+      return response.to_json    
     end
 
     get '/trees/:id' do

@@ -37,7 +37,7 @@ describe 'Api' do
       expect(last_response).to be_ok
     end
     it 'has a route for getting an individual tree' do
-      get '/api/v1/trees'
+      get '/api/v1/trees/1'
       expect(last_response).to be_ok
     end
     it 'has a route for creating a tree' do
@@ -53,6 +53,33 @@ describe 'Api' do
       expect(last_response).to be_ok
     end
   end
+
+  describe 'Responses' do
+    describe 'Trees' do
+      it 'returns all trees' do
+        create(:tree, id: '2')
+        get '/api/v1/trees'
+        expect(JSON.parse(last_response.body, symbolize_names: true)).to eq (
+          [{
+          id: 1,
+          name: 'test_tree',
+          description: 'an_example_description',
+          imageURL: 'https://goo.gl/cLZHjA',
+          location: 'there'
+          },
+          {
+          id: 2,
+          name: 'test_tree',
+          description: 'an_example_description',
+          imageURL: 'https://goo.gl/cLZHjA',
+          location: 'there'
+          }]
+        )
+      end
+    end
+
+  end
+
 
 
 end
