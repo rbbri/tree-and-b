@@ -11,7 +11,7 @@ gem 'pg'
 gem 'rake'
 gem 'sinatra'
 gem 'sinatra-activerecord'
-gem 'sinatra-contrib'
+gem 'sinatra-contrib', require: false
 
 group :test, :development do
   gem 'pry'

@@ -51,9 +51,7 @@ describe 'Api' do
     it 'has a route for deleting a tree' do
       delete '/api/v1/trees/1'
       expect(last_response).to be_ok
-      puts last_response
     end
-
   end
 
 

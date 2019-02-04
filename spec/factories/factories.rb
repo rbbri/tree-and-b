@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :user do
-    user_id { '1' }
+    id { '1' }
     location { 'Here' }
   end
 

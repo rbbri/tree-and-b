@@ -22,7 +22,6 @@ class Treeandb < Sinatra::Base
   end
 
   namespace '/api/v1' do
-
     get '/users/:id' do
       # Query if a user exists
     end
@@ -58,8 +57,5 @@ class Treeandb < Sinatra::Base
     delete '/trees/:id' do
       # Remove a tree (needs to be removed from user likes)
     end
-
   end
-
-
 end
