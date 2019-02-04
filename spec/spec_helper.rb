@@ -10,7 +10,7 @@ require 'rack/test'
 
 module RSpecMixin
   include Rack::Test::Methods
-  def app()
+  def app
     described_class
   end
 end
@@ -23,7 +23,6 @@ ActiveRecord::Base.logger.level = 1
 Capybara.app = Treeandb
 
 RSpec.configure do |config|
-
   config.include FactoryBot::Syntax::Methods
 
   config.before(:suite) do

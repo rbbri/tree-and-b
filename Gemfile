@@ -20,11 +20,11 @@ end
 group :test do
   gem 'capybara'
   gem 'database_cleaner'
+  gem 'rack-test'
   gem 'rspec', '~> 3.4'
   gem 'rubocop'
   gem 'shoulda'
   gem 'shoulda-matchers', require: false
   gem 'simplecov'
   gem 'valid_attribute'
-  gem 'rack-test'
 end
