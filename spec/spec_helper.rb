@@ -23,6 +23,14 @@ ActiveRecord::Base.logger.level = 1
 Capybara.app = Treeandb
 
 RSpec.configure do |config|
+
+  config.include FactoryBot::Syntax::Methods
+
+  config.before(:suite) do
+    FactoryBot.find_definitions
+    FactoryBot.definition_file_paths = %w[./spec/factories]
+  end
+
   config.include Capybara
 
   config.include RSpecMixin
@@ -45,6 +53,3 @@ Shoulda::Matchers.configure do |config|
     with.library :active_model
   end
 end
-
-FactoryBot.definition_file_paths = %w[./spec/factories]
-FactoryBot.find_definitions
