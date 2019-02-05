@@ -3,7 +3,6 @@
 require 'sinatra'
 require 'sinatra/activerecord'
 require 'sinatra/reloader'
-require 'sinatra/namespace'
 
 enable :sessions
 
@@ -13,8 +12,7 @@ Dir[File.join(File.dirname(__FILE__), 'app', '**', '*.rb')].each do |file|
 end
 
 # Main application
-class Treeandb < Sinatra::Base
-  register Sinatra::Namespace
+class Treeandb_Home < Sinatra::Base
   configure :development do
     register Sinatra::Reloader
   end
@@ -22,8 +20,11 @@ class Treeandb < Sinatra::Base
   get '/' do
     @title = 'Hello Trees'
   end
+end
 
-  namespace '/api/v1' do
+
+class Treeandb_API < Sinatra::Base
+
     get '/users/:id' do
       # Query if a user exists
       response = User.find_by(id: params[:id])
@@ -93,4 +94,3 @@ class Treeandb < Sinatra::Base
       tree.destroy
     end
   end
-end

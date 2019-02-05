@@ -20,7 +20,7 @@ set :database, :test
 
 ActiveRecord::Base.logger.level = 1
 
-Capybara.app = Treeandb
+Capybara.app = Treeandb_Home
 
 RSpec.configure do |config|
   config.include FactoryBot::Syntax::Methods

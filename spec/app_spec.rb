@@ -2,7 +2,7 @@
 
 require './app.rb'
 
-describe Treeandb do
+describe Treeandb_Home do
   it 'allows access to the homepage' do
     get '/'
     expect(last_response).to be_ok
@@ -10,7 +10,9 @@ describe Treeandb do
     expect(last_response.status).to eq(200)
   end
 
-  describe 'Api' do
+end
+
+  describe Treeandb_API do
     before do
       create(:user)
       create(:tree)
@@ -18,48 +20,48 @@ describe Treeandb do
 
     describe 'Routes' do
       it 'has a route for getting a user' do
-        get '/api/v1/users/1'
+        get '/users/1'
         expect(last_response).to be_ok
       end
       it 'has a route for creating a user' do
-        post '/api/v1/users'
+        post '/users'
         expect(last_response).to be_ok
       end
       it 'has a route for deleting a user' do
-        delete '/api/v1/users/1'
+        delete '/users/1'
         expect(last_response).to be_ok
       end
       it 'has a route for updating likes/dislikes' do
-        patch '/api/v1/users/1'
+        patch '/users/1'
         expect(last_response).to be_ok
       end
       it 'has a route for getting all trees' do
-        get '/api/v1/trees'
+        get '/trees'
         expect(last_response).to be_ok
       end
       it 'has a route for getting an individual tree' do
-        get '/api/v1/trees/1'
+        get '/trees/1'
         expect(last_response).to be_ok
       end
       it 'has a route for creating a tree' do
-        post '/api/v1/trees'
+        post '/trees'
         expect(last_response).to be_ok
       end
       it 'has a route for updating a tree' do
-        patch '/api/v1/trees/1'
+        patch '/trees/1'
         expect(last_response).to be_ok
       end
       it 'has a route for deleting a tree' do
-        delete '/api/v1/trees/1'
+        delete '/trees/1'
         expect(last_response).to be_ok
       end
     end
 
     describe 'Responses' do
       describe 'Tree endpoints' do
-        it 'get /api/v1/trees returns all trees' do
+        it 'get /trees returns all trees' do
           create(:tree, id: '2')
-          get '/api/v1/trees'
+          get '/trees'
           expect(JSON.parse(last_response.body, symbolize_names: true)).to eq(
             [{
               id: 1,
@@ -77,8 +79,8 @@ describe Treeandb do
              }]
           )
         end
-        it 'get /api/v1/trees/:id returns an individual tree' do
-          get '/api/v1/trees/1'
+        it 'get /trees/:id returns an individual tree' do
+          get '/trees/1'
           expect(JSON.parse(last_response.body, symbolize_names: true)).to eq(
             id: 1,
             name: 'test_tree',
@@ -87,14 +89,14 @@ describe Treeandb do
             location: 'there'
           )
         end
-        it 'post /api/v1/trees creates a tree' do
-          post '/api/v1/trees',
+        it 'post /trees creates a tree' do
+          post '/trees',
                id: 3,
                name: 'test_tree',
                description: 'an_example_description',
                imageURL: 'https://goo.gl/cLZHjA',
                location: 'there'
-          get '/api/v1/trees/3'
+          get '/trees/3'
           expect(JSON.parse(last_response.body, symbolize_names: true)).to eq(
             id: 3,
             name: 'test_tree',
@@ -103,14 +105,14 @@ describe Treeandb do
             location: 'there'
           )
         end
-        it 'patch /api/v1/trees/:id updates a tree' do
-          patch '/api/v1/trees/1',
+        it 'patch /trees/:id updates a tree' do
+          patch '/trees/1',
                 id: 1,
                 name: 'test_tree 2',
                 description: 'a_different_description',
                 imageURL: 'https://goo.gl/cLZHjB',
                 location: 'not there'
-          get '/api/v1/trees/1'
+          get '/trees/1'
           expect(JSON.parse(last_response.body, symbolize_names: true)).to eq(
             id: 1,
             name: 'test_tree 2',
@@ -119,15 +121,15 @@ describe Treeandb do
             location: 'not there'
           )
         end
-        it 'delete /api/v1/trees/:id deletes a tree' do
+        it 'delete /trees/:id deletes a tree' do
           create(:tree, id: '2')
-          delete '/api/v1/trees/2'
+          delete '/trees/2'
           expect(last_response).to be_ok
         end
       end
       describe 'User endpoints' do
-        it 'get /api/v1/users/:id returns an individual user' do
-          get '/api/v1/users/1'
+        it 'get /users/:id returns an individual user' do
+          get '/users/1'
           expect(JSON.parse(last_response.body, symbolize_names: true)).to eq(
             id: 1,
             location: 'Here',
@@ -136,14 +138,14 @@ describe Treeandb do
             radius: nil
           )
         end
-        it 'post /api/v1/users creates a user' do
-          post '/api/v1/users',
+        it 'post /users creates a user' do
+          post '/users',
                id: 2,
                location: 'Here',
                likes: [],
                dislikes: [],
                radius: nil
-          get '/api/v1/users/2'
+          get '/users/2'
           expect(JSON.parse(last_response.body, symbolize_names: true)).to eq(
             id: 2,
             location: 'Here',
@@ -152,18 +154,18 @@ describe Treeandb do
             radius: nil
           )
         end
-        it 'delete /api/v1/users/:id deletes a user' do
+        it 'delete /users/:id deletes a user' do
           create(:user, id: '3')
-          delete '/api/v1/users/3'
+          delete '/users/3'
           expect(last_response).to be_ok
         end
-        it 'patch /api/v1/users/:id updates a user' do
-          patch 'api/v1/users/1',
+        it 'patch /users/:id updates a user' do
+          patch '/users/1',
                 location: 'new location',
                 likes: [1],
                 dislikes: [2],
                 radius: 1
-          get 'api/v1/users/1'
+          get '/users/1'
           expect(JSON.parse(last_response.body, symbolize_names: true)).to eq(
             id: 1,
             location: 'new location',
@@ -175,4 +177,3 @@ describe Treeandb do
       end
     end
   end
-end
