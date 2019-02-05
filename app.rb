@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'sinatra'
 require 'sinatra/activerecord'
 require 'sinatra/reloader'
@@ -24,18 +26,32 @@ class Treeandb < Sinatra::Base
   namespace '/api/v1' do
     get '/users/:id' do
       # Query if a user exists
+      response = User.find_by(id: params[:id])
+      return response.to_json
     end
 
     post '/users' do
       # Create a user
+      User.create(
+        id: params[:id],
+        location: params[:location]
+      )
     end
 
     delete '/users/:id' do
       # Delete a user
+      user = User.find_by(id: params[:id])
+      user.destroy
     end
 
     patch '/users/:id' do
       # Update likes/dislikes
+      user = User.find_by(id: params[:id])
+      user.location = params[:location]
+      user.likes = params[:likes]
+      user.dislikes = params[:dislikes]
+      user.radius = params[:radius]
+      user.save
     end
 
     get '/trees' do

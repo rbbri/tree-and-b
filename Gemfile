@@ -4,12 +4,13 @@ source 'https://rubygems.org'
 
 git_source(:github) { |repo_name| "https://github.com/#{repo_name}" }
 
+ruby '2.5.1'
 # gem "rails"
 gem 'activerecord'
 gem 'factory_bot'
 gem 'pg'
 gem 'rake'
-gem 'sinatra'
+gem 'sinatra', require: 'sinatra/base'
 gem 'sinatra-activerecord'
 gem 'sinatra-contrib', require: false
 

@@ -10,21 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20_190_204_162_012) do
+ActiveRecord::Schema.define(version: 2019_02_04_162012) do
+
   # These are extensions that must be enabled in order to support this database
-  enable_extension 'plpgsql'
+  enable_extension "plpgsql"
 
-  create_table 'trees', force: :cascade do |t|
-    t.string 'name'
-    t.string 'description'
-    t.string 'imageURL'
-    t.string 'location'
+  create_table "trees", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.string "imageURL"
+    t.string "location"
   end
 
-  create_table 'users', force: :cascade do |t|
-    t.string 'location'
-    t.integer 'radius'
-    t.integer 'likes', default: [], array: true
-    t.integer 'dislikes', default: [], array: true
+  create_table "users", force: :cascade do |t|
+    t.string "location"
+    t.integer "radius"
+    t.integer "likes", default: [], array: true
+    t.integer "dislikes", default: [], array: true
   end
+
 end
