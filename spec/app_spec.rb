@@ -57,7 +57,7 @@ describe Treeandb do
 
     describe 'Responses' do
       describe 'Tree endpoints' do
-        it 'returns all trees' do
+        it 'get /api/v1/trees returns all trees' do
           create(:tree, id: '2')
           get '/api/v1/trees'
           expect(JSON.parse(last_response.body, symbolize_names: true)).to eq(
@@ -77,7 +77,7 @@ describe Treeandb do
              }]
           )
         end
-        it 'returns an individual tree' do
+        it 'get /api/v1/trees/:id returns an individual tree' do
           get '/api/v1/trees/1'
           expect(JSON.parse(last_response.body, symbolize_names: true)).to eq(
             id: 1,
@@ -87,7 +87,7 @@ describe Treeandb do
             location: 'there'
           )
         end
-        it 'creates a tree' do
+        it 'post /api/v1/trees creates a tree' do
           post '/api/v1/trees',
                id: 3,
                name: 'test_tree',
@@ -103,7 +103,7 @@ describe Treeandb do
             location: 'there'
           )
         end
-        it 'updates a tree' do
+        it 'patch /api/v1/trees/:id updates a tree' do
           patch '/api/v1/trees/1',
                 id: 1,
                 name: 'test_tree 2',
@@ -119,14 +119,14 @@ describe Treeandb do
             location: 'not there'
           )
         end
-        it 'deletes a tree' do
+        it 'delete /api/v1/trees/:id deletes a tree' do
           create(:tree, id: '2')
           delete '/api/v1/trees/2'
           expect(last_response).to be_ok
         end
       end
       describe 'User endpoints' do
-        it 'returns an individual user' do
+        it 'get /api/v1/users/:id returns an individual user' do
           get '/api/v1/users/1'
           expect(JSON.parse(last_response.body, symbolize_names: true)).to eq(
             id: 1,
@@ -136,7 +136,7 @@ describe Treeandb do
             radius: nil
           )
         end
-        it 'creates a user' do
+        it 'post /api/v1/users creates a user' do
           post '/api/v1/users',
                id: 2,
                location: 'Here',
@@ -152,12 +152,12 @@ describe Treeandb do
             radius: nil
           )
         end
-        it 'deletes a user' do
+        it 'delete /api/v1/users/:id deletes a user' do
           create(:user, id: '3')
           delete '/api/v1/users/3'
           expect(last_response).to be_ok
         end
-        it 'updates a user' do
+        it 'patch /api/v1/users/:id updates a user' do
           patch 'api/v1/users/1',
                 location: 'new location',
                 likes: [1],
