@@ -1,5 +1,9 @@
+# frozen_string_literal: true
+
 require './app.rb'
-  run Treeandb_Home
+
+run TreeAndBHome
+
 map '/api/v1' do
-  run Treeandb_API
+  run TreeAndBAPI
 end

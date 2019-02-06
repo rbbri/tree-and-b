@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'factory_bot'
 require 'pry'
 require 'rspec'
@@ -20,7 +22,7 @@ set :database, :test
 
 ActiveRecord::Base.logger.level = 1
 
-Capybara.app = Treeandb_Home
+Capybara.app = TreeAndBHome
 
 RSpec.configure do |config|
   config.include FactoryBot::Syntax::Methods
