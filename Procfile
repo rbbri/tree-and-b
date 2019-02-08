@@ -1,1 +1,8 @@
-web: bundle exec puma -t 5:5 -p ${PORT:-3000} -e ${RACK_ENV:-development}
+build:
+  languages:
+    - ruby
+run:
+  rake: bundle exec rake
+  rake: rake db:create
+  rake: rake db:schema:load
+  web: bundle exec puma config.ru -p $PORT
