@@ -10,6 +10,7 @@ gem 'factory_bot'
 gem 'pg'
 gem 'puma'
 gem 'rake'
+gem 'rspec', '~> 3.4'
 gem 'sinatra', require: 'sinatra/base'
 gem 'sinatra-activerecord'
 gem 'sinatra-contrib', require: false
@@ -22,7 +23,6 @@ group :test do
   gem 'capybara'
   gem 'database_cleaner'
   gem 'rack-test'
-  gem 'rspec', '~> 3.4'
   gem 'rubocop'
   gem 'shoulda'
   gem 'shoulda-matchers', require: false
