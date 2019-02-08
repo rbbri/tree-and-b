@@ -20,7 +20,7 @@ end
 set :environment, :test
 set :database, :test
 
-ActiveRecord::Base.logger.level = 1
+
 
 Capybara.app = TreeAndBHome
 
