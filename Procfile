@@ -1,1 +1,2 @@
-web: bundle exec rackup config.ru
+web: bundle exec rake -P
+     bundle exec rackup config.ru
