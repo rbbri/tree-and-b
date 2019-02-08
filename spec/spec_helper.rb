@@ -1,5 +1,5 @@
 # frozen_string_literal: true
-
+require 'sinatra/activerecord'
 require 'factory_bot'
 require 'pry'
 require 'rspec'
