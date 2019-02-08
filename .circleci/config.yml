@@ -13,8 +13,8 @@ jobs:
           RACK_ENV: test
       - image: postgres:9.5
         environment:
-          POSTGRES_USER: psql
-          POSTGRES_PASSWORD: ""
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: password
 
     working_directory: ~/repo
 

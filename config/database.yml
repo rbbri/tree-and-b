@@ -6,7 +6,7 @@ development:
   pool: 5
   host: localhost
   username: postgres
-  password: password 
+  password: password
 
 # Configure the database used when in the test environment
 test:
