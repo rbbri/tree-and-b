@@ -1,7 +1,17 @@
 require './app/models/user.rb'
 
 describe User, type: :model do
-  it { should validate_presence_of(:id) }
-  it { should validate_uniqueness_of(:id) }
-  it { should validate_presence_of(:location) }
+  describe 'Validations' do
+    it { should validate_presence_of(:id) }
+    it { should validate_uniqueness_of(:id) }
+    it { should validate_presence_of(:location) }
+  end
+
+  describe 'Associations' do
+    it 'has many trees' do
+      association = User.reflect_on_association(:trees)
+      expect(association.macro).to eq(:has_many)
+    end
+  end
+
 end
