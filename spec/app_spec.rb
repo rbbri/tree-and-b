@@ -69,14 +69,16 @@ describe TreeAndBAPI do
             name: 'test_tree',
             description: 'an_example_description',
             imageURL: 'https://goo.gl/cLZHjA',
-            location: 'there'
+            location: 'there',
+            user_id: 1
           },
            {
              id: 2,
              name: 'test_tree',
              description: 'an_example_description',
              imageURL: 'https://goo.gl/cLZHjA',
-             location: 'there'
+             location: 'there',
+             user_id: 1
            }]
         )
       end
@@ -87,7 +89,8 @@ describe TreeAndBAPI do
           name: 'test_tree',
           description: 'an_example_description',
           imageURL: 'https://goo.gl/cLZHjA',
-          location: 'there'
+          location: 'there',
+          user_id: 1
         )
       end
       it 'post /trees creates a tree' do
@@ -96,14 +99,16 @@ describe TreeAndBAPI do
              name: 'test_tree',
              description: 'an_example_description',
              imageURL: 'https://goo.gl/cLZHjA',
-             location: 'there'
+             location: 'there',
+             user_id: 1
         get '/trees/3'
         expect(response).to eq(
           id: 3,
           name: 'test_tree',
           description: 'an_example_description',
           imageURL: 'https://goo.gl/cLZHjA',
-          location: 'there'
+          location: 'there',
+          user_id: 1
         )
       end
       it 'patch /trees/:id updates a tree' do
@@ -119,7 +124,8 @@ describe TreeAndBAPI do
           name: 'test_tree 2',
           description: 'a_different_description',
           imageURL: 'https://goo.gl/cLZHjB',
-          location: 'not there'
+          location: 'not there',
+          user_id: 1
         )
       end
       it 'delete /trees/:id deletes a tree' do

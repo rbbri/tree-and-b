@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 require 'sinatra/activerecord'
 require 'factory_bot'
 require 'pry'
@@ -19,8 +20,6 @@ end
 
 set :environment, :test
 set :database, :test
-
-
 
 Capybara.app = TreeAndBHome
 

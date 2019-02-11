@@ -15,5 +15,6 @@ FactoryBot.define do
     description { 'an_example_description' }
     imageURL { 'https://goo.gl/cLZHjA' }
     location { 'there' }
+    user_id { '1' }
   end
 end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require './app/models/user.rb'
 
 describe User, type: :model do
@@ -13,5 +15,4 @@ describe User, type: :model do
       expect(association.macro).to eq(:has_many)
     end
   end
-
 end

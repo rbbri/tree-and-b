@@ -12,7 +12,6 @@ describe Tree, type: :model do
     it { should validate_presence_of(:location) }
   end
 
-
   describe 'Associations' do
     it 'belongs to a user' do
       association = Tree.reflect_on_association(:user)

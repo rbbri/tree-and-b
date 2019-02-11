@@ -73,7 +73,8 @@ class TreeAndBAPI < Sinatra::Base
       name: params[:name],
       description: params[:description],
       imageURL: params[:imageURL],
-      location: params[:location]
+      location: params[:location],
+      user_id: params[:user_id]
     )
   end
 
