@@ -4,8 +4,6 @@ require './app/models/user.rb'
 
 describe User, type: :model do
   describe 'Validations' do
-    it { should validate_presence_of(:id) }
-    it { should validate_uniqueness_of(:id) }
     it { should validate_presence_of(:location) }
   end
 
